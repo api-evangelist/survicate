@@ -1,0 +1,120 @@
+name: Survicate Plans and Pricing
+description: Survicate offers four paid subscription tiers — Starter, Growth, Pro, and Enterprise — each providing increasing response volumes, integrations, data retention periods, and user seats. All paid plans include access to the Data Export API and Webhooks.
+url: https://survicate.com/pricing/
+created: "2026-06-13"
+modified: "2026-06-13"
+plans:
+  - name: Starter
+    description: Entry-level plan for small teams getting started with customer feedback. Limited to 2 active surveys and 500 responses per month with 6 months data retention.
+    url: https://survicate.com/pricing/
+    price: Contact for pricing
+    billing: Monthly
+    limits:
+      - name: Monthly Responses
+        value: 500
+        unit: responses/month
+      - name: Active Surveys
+        value: 2
+        unit: surveys
+      - name: Data Points
+        value: 1500
+        unit: data-points/month
+      - name: Data Retention
+        value: 6
+        unit: months
+    features:
+      - Basic survey types
+      - Website and email surveys
+      - Standard integrations
+      - Webhooks and Export API
+  - name: Growth
+    description: Mid-tier plan for growing teams with access to the Research Hub, multilingual surveys, AI Research Assistant, and 25+ integrations. Supports 10 user seats and 2 teams.
+    url: https://survicate.com/pricing/
+    price: 114
+    unit: USD/month
+    billing: Annually
+    limits:
+      - name: Monthly Responses
+        value: 250
+        unit: responses/month
+      - name: Active Surveys
+        value: 2
+        unit: surveys
+      - name: Data Points
+        value: 1000
+        unit: data-points/month
+      - name: Data Retention
+        value: 6
+        unit: months
+      - name: User Seats
+        value: 10
+        unit: users
+      - name: Teams
+        value: 2
+        unit: teams
+    features:
+      - Unlimited multichannel surveys
+      - Research Hub access
+      - AI Research Assistant
+      - 25+ integrations
+      - Standard survey logic
+      - Multilingual surveys
+      - Custom branding
+      - Webhooks and Export API
+  - name: Pro
+    description: Advanced plan for established teams needing high survey volumes, advanced analytics, 2-year data retention, and 40+ integrations including CSS customization and 10 dashboards.
+    url: https://survicate.com/pricing/
+    price: 349
+    unit: USD/month
+    billing: Monthly or Annually
+    limits:
+      - name: Monthly Responses
+        value: 1500
+        unit: responses/month
+      - name: Active Surveys
+        value: Unlimited
+        unit: surveys
+      - name: Data Points
+        value: 2500
+        unit: data-points/month
+      - name: Data Retention
+        value: 2
+        unit: years
+      - name: Dashboards
+        value: 10
+        unit: dashboards
+    features:
+      - Advanced survey logic
+      - 40+ integrations
+      - Custom user seats and teams
+      - CSS customization
+      - 10 dashboards
+      - Priority human support
+      - Webhooks and Export API
+  - name: Enterprise
+    description: Custom enterprise plan for large organizations requiring custom survey infrastructure, 5+ years data retention, unlimited dashboards, and premium dedicated success management.
+    url: https://survicate.com/pricing/
+    price: 569
+    unit: USD/month
+    billing: Monthly or Annually
+    limits:
+      - name: Monthly Responses
+        value: Custom
+        unit: responses/month
+      - name: Active Surveys
+        value: Unlimited
+        unit: surveys
+      - name: Data Retention
+        value: 5+
+        unit: years
+      - name: Dashboards
+        value: Custom
+        unit: dashboards
+    features:
+      - All Pro features
+      - Custom number of dashboards
+      - Dedicated success management
+      - Custom survey infrastructure
+      - Premium support SLA
+      - Webhooks and Export API
+      - GDPR compliance tooling

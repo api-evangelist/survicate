@@ -1,0 +1,56 @@
+name: Survicate FinOps
+description: Financial operations guidance for managing Survicate API and platform costs. Survicate pricing is response-volume-based, so cost optimization centers on controlling monthly response consumption, choosing the right plan tier, and avoiding overage through proactive monitoring of survey response counts.
+url: https://survicate.com/pricing/
+created: "2026-06-13"
+modified: "2026-06-13"
+costDrivers:
+  - name: Monthly Survey Responses
+    description: The primary cost driver is the number of survey responses collected per month. Each plan tier caps responses (500 on Starter, 250 on Growth, 1500 on Pro). Exceeding the cap requires upgrading to a higher tier or negotiating custom Enterprise limits.
+    impact: high
+    unit: responses/month
+  - name: Data Points
+    description: Data points consumed per month (attributes, traits, and enriched respondent data) contribute to plan limits alongside raw response counts.
+    impact: medium
+    unit: data-points/month
+  - name: Data Retention Period
+    description: Longer data retention (up to 5+ years on Enterprise vs. 6 months on Starter/Growth) is a differentiating cost factor when historical data analysis is required.
+    impact: medium
+    unit: months/years
+  - name: User Seats
+    description: Higher-tier plans unlock more user seats and team structures. Growth includes 10 seats; Pro and Enterprise offer custom seat counts.
+    impact: low-medium
+    unit: seats
+  - name: Integration Tier
+    description: Growth provides 25+ integrations; Pro/Enterprise unlock 40+ integrations including advanced CRM and analytics connectors. Teams relying on premium integrations must be on Pro or higher.
+    impact: low
+    unit: integrations
+optimizationStrategies:
+  - name: Right-Size Plan to Response Volume
+    description: Audit actual monthly response volumes before selecting a plan. Starter (500/mo) and Growth (250/mo) have lower response ceilings than expected — verify your survey traffic fits the plan.
+    savings: high
+  - name: Deactivate Unused Surveys
+    description: All paid plans cap active concurrent surveys (2 on Starter/Growth, unlimited on Pro+). Keep only actively-collecting surveys enabled to avoid hitting the active survey limit prematurely.
+    savings: medium
+  - name: Annual vs Monthly Billing
+    description: Survicate offers discounted annual billing (e.g., Growth at $114/mo annually). Committing annually reduces effective per-month cost compared to monthly billing where available.
+    savings: medium
+  - name: Use Data Export API for Bulk Pulls
+    description: Rather than triggering individual API calls per respondent, use the Data Export API to pull responses in bulk. This reduces API call volume and keeps consumption within the 1000 req/min rate limit without requiring higher-tier infrastructure.
+    savings: low
+  - name: Monitor Data Retention Needs
+    description: If analysis rarely requires data older than 6 months, Starter or Growth plans are sufficient. Only upgrade to Pro (2-year retention) or Enterprise (5+ years) if long-term trend analysis is a genuine business requirement.
+    savings: medium
+  - name: Consolidate Workspaces
+    description: Rate limits (5 concurrent requests, 1000 req/min) are scoped per workspace. Consolidating surveys into fewer workspaces reduces management overhead but concentrate rate limit consumption — balance accordingly.
+    savings: low
+planUpgradeTriggers:
+  - trigger: Monthly responses consistently exceeding 80% of plan cap
+    recommendation: Evaluate upgrade to next tier before hitting the ceiling and disrupting survey collection.
+  - trigger: Need for AI Research Assistant or multilingual surveys
+    recommendation: Upgrade from Starter to Growth plan.
+  - trigger: Requiring more than 2 active surveys simultaneously
+    recommendation: Upgrade to Pro for unlimited active surveys.
+  - trigger: Need for advanced survey logic or CSS customization
+    recommendation: Upgrade from Growth to Pro plan.
+  - trigger: Data retention requirement beyond 2 years
+    recommendation: Engage Enterprise sales for custom retention SLA.
