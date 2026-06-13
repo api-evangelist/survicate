@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/survicate/main/json-schema/survicate-survey-schema.json",
+  "title": "Survicate Survey",
+  "description": "Schema for a Survicate survey object returned by the Data Export API",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the survey"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the survey"
+    },
+    "status": {
+      "type": "string",
+      "description": "Status of the survey",
+      "enum": ["active", "paused", "closed"]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date and time when the survey was created"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date and time when the survey was last updated"
+    },
+    "responses_count": {
+      "type": "integer",
+      "description": "Total number of responses collected",
+      "minimum": 0
+    },
+    "questions_count": {
+      "type": "integer",
+      "description": "Total number of questions in the survey",
+      "minimum": 0
+    }
+  },
+  "required": ["id", "name", "status", "created_at"]
+}

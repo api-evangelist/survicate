@@ -1,0 +1,23 @@
+{
+  "id": "resp_xyz789",
+  "survey_id": "survey_abc123",
+  "respondent_id": "respondent_111aaa",
+  "completed_at": "2025-06-10T15:23:45Z",
+  "answers": [
+    {
+      "question_id": "q_001",
+      "value": 9,
+      "answer_ids": []
+    },
+    {
+      "question_id": "q_002",
+      "value": "The onboarding process was smooth and the support team was very helpful.",
+      "answer_ids": []
+    },
+    {
+      "question_id": "q_003",
+      "value": null,
+      "answer_ids": ["ans_option_a", "ans_option_c"]
+    }
+  ]
+}

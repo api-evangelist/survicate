@@ -1,0 +1,529 @@
+openapi: 3.0.3
+info:
+  title: Survicate Data Export API
+  description: >
+    The Survicate Data Export API (v2) allows retrieval of survey data collected
+    in your Survicate account. It exposes resources for surveys, responses,
+    respondents, and personal data management to integrate feedback into
+    databases, CRMs, and custom solutions.
+  version: "2"
+  contact:
+    name: Survicate Developer Documentation
+    url: https://developers.survicate.com/data-export/
+  termsOfService: https://survicate.com/terms/
+  license:
+    name: Proprietary
+    url: https://survicate.com/terms/
+servers:
+  - url: https://data.survicate.com
+    description: Survicate Data Export API base URL
+security:
+  - BasicAuth: []
+tags:
+  - name: Surveys
+    description: Operations related to surveys and their questions
+  - name: Responses
+    description: Operations related to survey responses
+  - name: Respondents
+    description: Operations related to survey respondents
+  - name: Personal Data
+    description: GDPR personal data management operations
+paths:
+  /v2/surveys:
+    get:
+      operationId: listSurveys
+      summary: List all surveys
+      description: Returns a paginated list of all surveys in the Survicate account.
+      tags:
+        - Surveys
+      parameters:
+        - name: page
+          in: query
+          description: Page number for pagination
+          required: false
+          schema:
+            type: integer
+            default: 1
+            minimum: 1
+        - name: per_page
+          in: query
+          description: Number of surveys per page
+          required: false
+          schema:
+            type: integer
+            default: 20
+            maximum: 100
+      responses:
+        "200":
+          description: A list of surveys
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SurveyList"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+  /v2/surveys/{surveyId}:
+    get:
+      operationId: getSurvey
+      summary: Retrieve survey information
+      description: Returns detailed information about a specific survey.
+      tags:
+        - Surveys
+      parameters:
+        - $ref: "#/components/parameters/surveyId"
+      responses:
+        "200":
+          description: Survey details
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Survey"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+  /v2/surveys/{surveyId}/questions:
+    get:
+      operationId: listSurveyQuestions
+      summary: List questions for a survey
+      description: Returns all questions for a specific survey along with their answer options.
+      tags:
+        - Surveys
+      parameters:
+        - $ref: "#/components/parameters/surveyId"
+      responses:
+        "200":
+          description: A list of questions
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/QuestionList"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+  /v2/surveys/{surveyId}/responses:
+    get:
+      operationId: listResponses
+      summary: List all responses for a survey
+      description: Returns a paginated list of all responses collected for a specific survey.
+      tags:
+        - Responses
+      parameters:
+        - $ref: "#/components/parameters/surveyId"
+        - name: page
+          in: query
+          description: Page number for pagination
+          required: false
+          schema:
+            type: integer
+            default: 1
+            minimum: 1
+        - name: per_page
+          in: query
+          description: Number of responses per page
+          required: false
+          schema:
+            type: integer
+            default: 20
+            maximum: 100
+        - name: from
+          in: query
+          description: Filter responses from this date (ISO 8601)
+          required: false
+          schema:
+            type: string
+            format: date-time
+        - name: to
+          in: query
+          description: Filter responses up to this date (ISO 8601)
+          required: false
+          schema:
+            type: string
+            format: date-time
+      responses:
+        "200":
+          description: A list of survey responses
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseList"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+  /v2/surveys/{surveyId}/responses/{responseId}:
+    get:
+      operationId: getResponse
+      summary: Retrieve a response
+      description: Returns detailed information about a specific survey response.
+      tags:
+        - Responses
+      parameters:
+        - $ref: "#/components/parameters/surveyId"
+        - $ref: "#/components/parameters/responseId"
+      responses:
+        "200":
+          description: Survey response details
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+  /v2/respondents/{respondentId}/attributes:
+    get:
+      operationId: listRespondentAttributes
+      summary: List respondent attributes
+      description: Returns all attributes (traits) associated with a specific respondent.
+      tags:
+        - Respondents
+      parameters:
+        - $ref: "#/components/parameters/respondentId"
+      responses:
+        "200":
+          description: Respondent attributes
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RespondentAttributes"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+  /v2/respondents/{respondentId}/responses:
+    get:
+      operationId: listRespondentResponses
+      summary: List respondent responses
+      description: Returns all survey responses submitted by a specific respondent.
+      tags:
+        - Respondents
+      parameters:
+        - $ref: "#/components/parameters/respondentId"
+        - name: page
+          in: query
+          description: Page number for pagination
+          required: false
+          schema:
+            type: integer
+            default: 1
+            minimum: 1
+        - name: per_page
+          in: query
+          description: Number of responses per page
+          required: false
+          schema:
+            type: integer
+            default: 20
+            maximum: 100
+      responses:
+        "200":
+          description: A list of respondent responses
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseList"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+  /v2/personal-data:
+    get:
+      operationId: getPersonalDataCounters
+      summary: Get personal data counters
+      description: Returns counters for personal data stored in the Survicate account, supporting GDPR compliance.
+      tags:
+        - Personal Data
+      responses:
+        "200":
+          description: Personal data counters
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PersonalDataCounters"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+    delete:
+      operationId: deletePersonalDataByEmail
+      summary: Delete personal data by email
+      description: Deletes all personal data associated with a given email address for GDPR compliance.
+      tags:
+        - Personal Data
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - email
+              properties:
+                email:
+                  type: string
+                  format: email
+                  description: The email address whose personal data should be deleted
+      responses:
+        "200":
+          description: Personal data deleted successfully
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+components:
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+      description: >
+        Use your Survicate API key as the value for Basic authentication.
+        The API key can be found in the Survicate panel under Surveys Settings > Access Keys.
+        Format: `Basic {{apiKey}}`
+  parameters:
+    surveyId:
+      name: surveyId
+      in: path
+      required: true
+      description: The unique identifier of the survey
+      schema:
+        type: string
+    responseId:
+      name: responseId
+      in: path
+      required: true
+      description: The unique identifier of the response
+      schema:
+        type: string
+    respondentId:
+      name: respondentId
+      in: path
+      required: true
+      description: The unique identifier of the respondent
+      schema:
+        type: string
+  responses:
+    Unauthorized:
+      description: Authentication failed or API key is missing
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    NotFound:
+      description: The requested resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    TooManyRequests:
+      description: >
+        Rate limit exceeded. Survicate allows up to 5 concurrent requests
+        and up to 1000 requests per minute per workspace.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+  schemas:
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          description: A human-readable error message
+        code:
+          type: string
+          description: An error code identifier
+    Pagination:
+      type: object
+      properties:
+        page:
+          type: integer
+          description: Current page number
+        per_page:
+          type: integer
+          description: Number of items per page
+        total:
+          type: integer
+          description: Total number of items
+        total_pages:
+          type: integer
+          description: Total number of pages
+    Survey:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the survey
+        name:
+          type: string
+          description: Name of the survey
+        status:
+          type: string
+          description: Status of the survey (e.g., active, paused, closed)
+          enum:
+            - active
+            - paused
+            - closed
+        created_at:
+          type: string
+          format: date-time
+          description: Date and time when the survey was created
+        updated_at:
+          type: string
+          format: date-time
+          description: Date and time when the survey was last updated
+        responses_count:
+          type: integer
+          description: Total number of responses collected
+        questions_count:
+          type: integer
+          description: Total number of questions in the survey
+    SurveyList:
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/Pagination"
+      properties:
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/Survey"
+    Question:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the question
+        survey_id:
+          type: string
+          description: Identifier of the parent survey
+        type:
+          type: string
+          description: Type of question (e.g., nps, rating, text, multiple_choice)
+          enum:
+            - nps
+            - rating
+            - text
+            - multiple_choice
+            - checkbox
+            - dropdown
+        content:
+          type: string
+          description: The question text
+        position:
+          type: integer
+          description: Position/order of the question in the survey
+        answers:
+          type: array
+          description: Available answer options for closed-ended questions
+          items:
+            $ref: "#/components/schemas/AnswerOption"
+    AnswerOption:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the answer option
+        content:
+          type: string
+          description: Text of the answer option
+        position:
+          type: integer
+          description: Position/order of the answer option
+    QuestionList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/Question"
+    Response:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the response
+        survey_id:
+          type: string
+          description: Identifier of the survey this response belongs to
+        respondent_id:
+          type: string
+          description: Identifier of the respondent who submitted this response
+        completed_at:
+          type: string
+          format: date-time
+          description: Date and time when the response was completed
+        answers:
+          type: array
+          description: Answers submitted for each question
+          items:
+            $ref: "#/components/schemas/Answer"
+    Answer:
+      type: object
+      properties:
+        question_id:
+          type: string
+          description: Identifier of the question being answered
+        value:
+          oneOf:
+            - type: string
+            - type: number
+            - type: array
+              items:
+                type: string
+          description: The answer value (string for text, number for ratings/NPS, array for multi-select)
+        answer_ids:
+          type: array
+          description: IDs of selected answer options (for closed-ended questions)
+          items:
+            type: string
+    ResponseList:
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/Pagination"
+      properties:
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/Response"
+    RespondentAttributes:
+      type: object
+      properties:
+        respondent_id:
+          type: string
+          description: Unique identifier for the respondent
+        attributes:
+          type: object
+          additionalProperties: true
+          description: Key-value pairs of respondent traits/attributes
+          example:
+            email: user@example.com
+            name: Jane Doe
+            plan: pro
+            user_id: "12345"
+    PersonalDataCounters:
+      type: object
+      properties:
+        total_respondents:
+          type: integer
+          description: Total number of respondents with stored personal data
+        total_responses:
+          type: integer
+          description: Total number of responses containing personal data

@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/survicate/main/json-schema/survicate-response-schema.json",
+  "title": "Survicate Survey Response",
+  "description": "Schema for a Survicate survey response object returned by the Data Export API",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the response"
+    },
+    "survey_id": {
+      "type": "string",
+      "description": "Identifier of the survey this response belongs to"
+    },
+    "respondent_id": {
+      "type": "string",
+      "description": "Identifier of the respondent who submitted this response"
+    },
+    "completed_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date and time when the response was completed"
+    },
+    "answers": {
+      "type": "array",
+      "description": "Answers submitted for each question",
+      "items": {
+        "type": "object",
+        "properties": {
+          "question_id": {
+            "type": "string",
+            "description": "Identifier of the question being answered"
+          },
+          "value": {
+            "description": "The answer value",
+            "oneOf": [
+              { "type": "string" },
+              { "type": "number" },
+              { "type": "array", "items": { "type": "string" } }
+            ]
+          },
+          "answer_ids": {
+            "type": "array",
+            "description": "IDs of selected answer options for closed-ended questions",
+            "items": { "type": "string" }
+          }
+        },
+        "required": ["question_id"]
+      }
+    }
+  },
+  "required": ["id", "survey_id", "respondent_id"]
+}

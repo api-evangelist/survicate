@@ -1,0 +1,101 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "survicate": "https://developers.survicate.com/vocab#",
+    "Survey": "survicate:Survey",
+    "Question": "survicate:Question",
+    "Response": "survicate:Response",
+    "Respondent": "survicate:Respondent",
+    "AnswerOption": "survicate:AnswerOption",
+    "Answer": "survicate:Answer",
+    "PersonalData": "survicate:PersonalData",
+    "id": "@id",
+    "name": "schema:name",
+    "description": "schema:description",
+    "status": "survicate:status",
+    "created_at": "schema:dateCreated",
+    "updated_at": "schema:dateModified",
+    "completed_at": "schema:dateCompleted",
+    "responses_count": "survicate:responsesCount",
+    "questions_count": "survicate:questionsCount",
+    "survey_id": {
+      "@id": "survicate:survey",
+      "@type": "@id"
+    },
+    "respondent_id": {
+      "@id": "survicate:respondent",
+      "@type": "@id"
+    },
+    "question_id": {
+      "@id": "survicate:question",
+      "@type": "@id"
+    },
+    "answers": {
+      "@id": "survicate:answers",
+      "@container": "@set"
+    },
+    "answer_ids": {
+      "@id": "survicate:answerIds",
+      "@container": "@set"
+    },
+    "value": "survicate:value",
+    "type": "survicate:questionType",
+    "content": "schema:text",
+    "position": "schema:position",
+    "attributes": "survicate:attributes",
+    "email": "schema:email",
+    "page": "survicate:page",
+    "per_page": "survicate:perPage",
+    "total": "survicate:total",
+    "total_pages": "survicate:totalPages",
+    "data": "survicate:data"
+  },
+  "@graph": [
+    {
+      "@id": "survicate:Survey",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Survey",
+      "rdfs:comment": "A structured questionnaire created in Survicate to collect customer or user feedback.",
+      "schema:url": "https://developers.survicate.com/data-export/survey/"
+    },
+    {
+      "@id": "survicate:Question",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Survey Question",
+      "rdfs:comment": "An individual question within a Survicate survey, supporting types such as NPS, rating, text, and multiple choice.",
+      "schema:url": "https://developers.survicate.com/data-export/survey/"
+    },
+    {
+      "@id": "survicate:Response",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Survey Response",
+      "rdfs:comment": "A completed submission of answers to a Survicate survey by a respondent.",
+      "schema:url": "https://developers.survicate.com/data-export/response/"
+    },
+    {
+      "@id": "survicate:Respondent",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Respondent",
+      "rdfs:comment": "A person who has submitted one or more survey responses in Survicate.",
+      "schema:url": "https://developers.survicate.com/data-export/respondent/"
+    },
+    {
+      "@id": "https://developers.survicate.com/",
+      "@type": "schema:WebAPI",
+      "schema:name": "Survicate Data Export API",
+      "schema:description": "REST API for exporting survey data from Survicate, including surveys, responses, respondents, and personal data management.",
+      "schema:documentation": "https://developers.survicate.com/data-export/",
+      "schema:version": "2",
+      "schema:provider": {
+        "@type": "schema:Organization",
+        "schema:name": "Survicate",
+        "schema:url": "https://survicate.com/",
+        "schema:sameAs": [
+          "https://github.com/Survicate",
+          "https://x.com/Survicate",
+          "https://www.linkedin.com/products/survicate/"
+        ]
+      }
+    }
+  ]
+}

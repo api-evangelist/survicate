@@ -1,0 +1,130 @@
+name: Survicate Vocabulary
+description: Domain vocabulary for the Survicate customer feedback and survey platform API
+url: https://developers.survicate.com/data-export/
+version: "1.0"
+terms:
+  - term: Survey
+    definition: >
+      A structured questionnaire created in Survicate to collect feedback from
+      customers or users. Surveys can be deployed on websites, in apps, or via
+      email and can contain multiple questions of varying types.
+    type: resource
+    related:
+      - Question
+      - Response
+      - Respondent
+
+  - term: Question
+    definition: >
+      An individual item within a survey that prompts a respondent to provide
+      feedback. Questions have types such as NPS, rating, text, multiple choice,
+      checkbox, and dropdown.
+    type: resource
+    related:
+      - Survey
+      - AnswerOption
+      - Answer
+
+  - term: AnswerOption
+    definition: >
+      A predefined choice available to respondents for closed-ended questions
+      such as multiple choice, checkbox, and dropdown question types.
+    type: resource
+    related:
+      - Question
+
+  - term: Response
+    definition: >
+      A completed submission of answers to a survey by a respondent. A response
+      contains one Answer per question in the survey and is associated with a
+      specific respondent and timestamp.
+    type: resource
+    related:
+      - Survey
+      - Respondent
+      - Answer
+
+  - term: Answer
+    definition: >
+      An individual answer to a single survey question, contained within a
+      Response. The value can be a string (text), number (rating/NPS score),
+      or array of strings (multi-select options).
+    type: resource
+    related:
+      - Response
+      - Question
+
+  - term: Respondent
+    definition: >
+      A person who has submitted one or more survey responses. Respondents are
+      identified by a unique ID and may have associated attributes (traits) such
+      as email, name, plan, or custom properties set via the JavaScript or Mobile SDK.
+    type: resource
+    related:
+      - Response
+      - RespondentAttributes
+
+  - term: RespondentAttributes
+    definition: >
+      Key-value pairs of traits associated with a respondent, typically set using
+      the Survicate JavaScript SDK or Mobile SDK. Common attributes include email,
+      name, user_id, and plan, but custom attributes are also supported.
+    type: resource
+    related:
+      - Respondent
+
+  - term: NPS
+    definition: >
+      Net Promoter Score - a survey question type that asks respondents to rate
+      their likelihood to recommend a product or service on a scale from 0 to 10.
+      Scores of 9-10 are Promoters, 7-8 are Passives, and 0-6 are Detractors.
+    type: concept
+    related:
+      - Question
+
+  - term: Webhook
+    definition: >
+      A real-time HTTP POST notification sent by Survicate to a configured endpoint
+      when a survey event occurs, such as a new response submission or survey
+      completion. Enables event-driven integrations with external systems.
+    type: integration
+
+  - term: APIKey
+    definition: >
+      A secret credential used to authenticate requests to the Survicate Data Export
+      API. The API key is passed in the Authorization header using HTTP Basic
+      authentication format. Keys are managed in the Survicate panel under
+      Surveys Settings > Access Keys.
+    type: security
+
+  - term: PersonalData
+    definition: >
+      Data that identifies or can be used to identify an individual respondent,
+      such as email addresses and names. The Survicate Data Export API provides
+      endpoints to retrieve counts of and delete personal data for GDPR compliance.
+    type: concept
+    related:
+      - Respondent
+
+  - term: DataExportAPI
+    definition: >
+      The Survicate REST API (v2) that allows programmatic retrieval of survey data
+      including surveys, questions, responses, respondents, and personal data.
+      The base URL is https://data.survicate.com and authentication uses HTTP Basic
+      with an API key.
+    type: api
+
+  - term: Workspace
+    definition: >
+      An organizational unit in Survicate that groups surveys, respondents, and
+      settings. Rate limits are applied per workspace (1000 requests per minute,
+      5 concurrent requests).
+    type: concept
+
+  - term: RateLimit
+    definition: >
+      Constraints applied to the Survicate Data Export API to prevent abuse.
+      Limits include a maximum of 5 concurrent simultaneous requests and 1000
+      requests per minute per workspace. Violations result in a 429 Too Many
+      Requests response.
+    type: concept

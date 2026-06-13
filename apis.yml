@@ -31,6 +31,8 @@ apis:
         url: https://developers.survicate.com/data-export/
       - type: Authentication
         url: https://developers.survicate.com/data-export/setup/
+      - type: OpenAPI
+        url: openapi/survicate-data-export-openapi.yml
   - name: Survicate JavaScript SDK
     description: The Survicate JavaScript SDK enables web-based feedback collection on websites and web applications. It provides methods to trigger surveys, set visitor traits, handle custom events, and control survey display programmatically.
     image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
@@ -98,6 +100,10 @@ common:
     url: rate-limits/survicate-rate-limits.yml
   - type: FinOps
     url: finops/survicate-finops.yml
+  - type: Vocabulary
+    url: vocabulary/survicate-vocabulary.yml
+  - type: JSONLd
+    url: json-ld/survicate-context.jsonld
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
