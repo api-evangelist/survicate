@@ -1,6 +1,6 @@
 name: Survicate
 description: Survicate is a customer feedback and survey platform with a REST API for managing surveys, collecting responses, segmenting audiences, and integrating feedback into CRM and analytics tools. The platform provides a Data Export API (v2) for retrieving survey data, a JavaScript SDK for web-based feedback collection, Mobile SDKs for iOS, Android, React Native, Flutter, and Unity, and Webhooks for event-driven integrations.
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/survicate/refs/heads/main/apis.yml
 created: "2026-06-13"
 modified: "2026-06-13"
@@ -17,7 +17,7 @@ tags:
 apis:
   - name: Survicate Data Export API
     description: The Survicate Data Export API (v2) allows retrieval of survey data collected in your Survicate account. It exposes resources for surveys, responses, respondents, and personal data management to integrate feedback into databases, CRMs, and custom solutions.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://developers.survicate.com/data-export/
     baseURL: https://data.survicate.com
     tags:
@@ -35,7 +35,7 @@ apis:
         url: openapi/survicate-data-export-openapi.yml
   - name: Survicate JavaScript SDK
     description: The Survicate JavaScript SDK enables web-based feedback collection on websites and web applications. It provides methods to trigger surveys, set visitor traits, handle custom events, and control survey display programmatically.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://developers.survicate.com/javascript/methods/
     baseURL: https://survicate.com
     tags:
@@ -48,7 +48,7 @@ apis:
         url: https://developers.survicate.com/javascript/methods/
   - name: Survicate Mobile SDK
     description: Survicate Mobile SDKs for iOS, Android, React Native, Flutter, and Unity enable in-app survey collection on mobile platforms with integrations for Segment, UXCam, and FullStory.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://developers.survicate.com/
     baseURL: https://survicate.com
     tags:
@@ -66,7 +66,7 @@ apis:
         url: https://github.com/Survicate
   - name: Survicate Webhooks
     description: Survicate Webhooks enable real-time event-driven integrations by subscribing to events triggered by Survicate surveys such as new responses and survey completions.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://developers.survicate.com/
     baseURL: https://survicate.com
     tags:
