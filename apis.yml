@@ -102,7 +102,7 @@ common:
     url: finops/survicate-finops.yml
   - type: Vocabulary
     url: vocabulary/survicate-vocabulary.yml
-  - type: JSONLd
+  - type: JSONLD
     url: json-ld/survicate-context.jsonld
 maintainers:
   - FN: Kin Lane

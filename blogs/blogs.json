@@ -2,13 +2,18 @@
   "repo": "survicate",
   "feeds": [
     {
-      "source": "https://www.linkedin.com/products/survicate/",
-      "feed_url": "https://www.linkedin.com/products/survicate/",
-      "title": "",
+      "source": "https://survicate.com/blog/",
+      "feed_url": "",
       "saved": 0,
-      "method": "none"
+      "method": "agent-scrape"
+    },
+    {
+      "source": "https://www.linkedin.com/products/survicate/",
+      "saved": 0,
+      "error": "linkedin not scrapable"
     }
   ],
-  "post_count": 0,
-  "fetched": "2026-06-14T20:42:17Z"
+  "post_count": 1,
+  "fetched": "2026-06-27T13:16:07Z",
+  "agent_pulled": "2026-06-27"
 }
