@@ -78,6 +78,14 @@ apis:
       - type: Documentation
         url: https://developers.survicate.com/
 common:
+  - type: TrustCenter
+    url: security/survicate-trust-center.yml
+  - type: VulnerabilityDisclosure
+    url: security/survicate-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/survicate-domain-security.yml
+  - type: Authentication
+    url: authentication/survicate-authentication.yml
   - type: Website
     url: https://survicate.com/
   - type: Documentation

@@ -1,0 +1,15 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/survicate-data-export-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: BasicAuth
+  type: http
+  scheme: basic
+  description: 'Use your Survicate API key as the value for Basic authentication. The API key
+    can be found in the Survicate panel under Surveys Settings > Access Keys. Format: `Basic
+    {{apiKey}}`'
+  sources:
+  - openapi/survicate-data-export-openapi.yml
