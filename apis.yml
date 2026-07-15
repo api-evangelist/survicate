@@ -78,6 +78,8 @@ apis:
       - type: Documentation
         url: https://developers.survicate.com/
 common:
+  - type: AgenticAccess
+    url: agentic-access/survicate-agentic-access.yml
   - type: TrustCenter
     url: security/survicate-trust-center.yml
   - type: VulnerabilityDisclosure
