@@ -1,0 +1,117 @@
+openapi: 3.0.3
+info:
+  title: Survicate Data Export Personal Data API
+  description: 'The Survicate Data Export API (v2) allows retrieval of survey data collected in your Survicate account. It exposes resources for surveys, responses, respondents, and personal data management to integrate feedback into databases, CRMs, and custom solutions.
+
+    '
+  version: '2'
+  contact:
+    name: Survicate Developer Documentation
+    url: https://developers.survicate.com/data-export/
+  termsOfService: https://survicate.com/terms/
+  license:
+    name: Proprietary
+    url: https://survicate.com/terms/
+servers:
+- url: https://data.survicate.com
+  description: Survicate Data Export API base URL
+security:
+- BasicAuth: []
+tags:
+- name: Personal Data
+  description: GDPR personal data management operations
+paths:
+  /v2/personal-data:
+    get:
+      operationId: getPersonalDataCounters
+      summary: Get personal data counters
+      description: Returns counters for personal data stored in the Survicate account, supporting GDPR compliance.
+      tags:
+      - Personal Data
+      responses:
+        '200':
+          description: Personal data counters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonalDataCounters'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    delete:
+      operationId: deletePersonalDataByEmail
+      summary: Delete personal data by email
+      description: Deletes all personal data associated with a given email address for GDPR compliance.
+      tags:
+      - Personal Data
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - email
+              properties:
+                email:
+                  type: string
+                  format: email
+                  description: The email address whose personal data should be deleted
+      responses:
+        '200':
+          description: Personal data deleted successfully
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+components:
+  responses:
+    Unauthorized:
+      description: Authentication failed or API key is missing
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    TooManyRequests:
+      description: 'Rate limit exceeded. Survicate allows up to 5 concurrent requests and up to 1000 requests per minute per workspace.
+
+        '
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    PersonalDataCounters:
+      type: object
+      properties:
+        total_respondents:
+          type: integer
+          description: Total number of respondents with stored personal data
+        total_responses:
+          type: integer
+          description: Total number of responses containing personal data
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          description: A human-readable error message
+        code:
+          type: string
+          description: An error code identifier
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+      description: 'Use your Survicate API key as the value for Basic authentication. The API key can be found in the Survicate panel under Surveys Settings > Access Keys. Format: `Basic {{apiKey}}`
+
+        '
