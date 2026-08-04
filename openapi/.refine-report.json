@@ -1,0 +1,20 @@
+{
+  "provider": "survicate",
+  "sources": [
+    "survicate-personal-data-api-openapi.yml",
+    "survicate-respondents-api-openapi.yml",
+    "survicate-responses-api-openapi.yml",
+    "survicate-surveys-api-openapi.yml"
+  ],
+  "outputs": [
+    "survicate-personal-data-api-openapi.yml",
+    "survicate-respondents-api-openapi.yml",
+    "survicate-responses-api-openapi.yml",
+    "survicate-surveys-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
