@@ -1,0 +1,618 @@
+{
+  "item": [
+    {
+      "id": "2f87d249-b8be-44c4-8cce-b1d81692e07e",
+      "name": "Respondents",
+      "description": {
+        "content": "Operations related to survey respondents",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "dac33dba-6fcd-4a46-aa6f-c246d942dcf1",
+          "name": "List respondent attributes",
+          "request": {
+            "name": "List respondent attributes",
+            "description": {
+              "content": "Returns all attributes (traits) associated with a specific respondent.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "respondents",
+                ":respondentId",
+                "attributes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "respondentId",
+                  "description": "(Required) The unique identifier of the respondent"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b02463b4-904e-4b49-8a09-7bccbb144bc9",
+              "name": "Respondent attributes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "respondents",
+                    ":respondentId",
+                    "attributes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "respondentId",
+                      "description": "(Required) The unique identifier of the respondent"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"respondent_id\": \"string\",\n  \"attributes\": {\n    \"email\": \"user@example.com\",\n    \"name\": \"Jane Doe\",\n    \"plan\": \"pro\",\n    \"user_id\": \"12345\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0712e7f0-f54d-4c21-9d02-83cd1e0beac1",
+              "name": "Authentication failed or API key is missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "respondents",
+                    ":respondentId",
+                    "attributes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "respondentId",
+                      "description": "(Required) The unique identifier of the respondent"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a7a0fca6-5c5b-49a5-9090-aa7c0d50cf19",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "respondents",
+                    ":respondentId",
+                    "attributes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "respondentId",
+                      "description": "(Required) The unique identifier of the respondent"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7323d2fc-30f8-4df7-ad98-3b0df2047d61",
+              "name": "Rate limit exceeded. Survicate allows up to 5 concurrent requests and up to 1000 requests per minute per workspace.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "respondents",
+                    ":respondentId",
+                    "attributes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "respondentId",
+                      "description": "(Required) The unique identifier of the respondent"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7ccd7f4f-9b7c-46c4-8636-c92236c6a6b3",
+          "name": "List respondent responses",
+          "request": {
+            "name": "List respondent responses",
+            "description": {
+              "content": "Returns all survey responses submitted by a specific respondent.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "respondents",
+                ":respondentId",
+                "responses"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "20",
+                  "description": "Number of responses per page"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "respondentId",
+                  "description": "(Required) The unique identifier of the respondent"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3fe8c9fb-925a-4319-a34c-e12be6197e91",
+              "name": "A list of respondent responses",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "respondents",
+                    ":respondentId",
+                    "responses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "respondentId",
+                      "description": "(Required) The unique identifier of the respondent"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"survey_id\": \"string\",\n      \"respondent_id\": \"string\",\n      \"completed_at\": \"2021-10-27T01:42:43.776Z\",\n      \"answers\": [\n        {\n          \"question_id\": \"string\",\n          \"value\": \"string\",\n          \"answer_ids\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"question_id\": \"string\",\n          \"value\": \"string\",\n          \"answer_ids\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"survey_id\": \"string\",\n      \"respondent_id\": \"string\",\n      \"completed_at\": \"2017-07-21T20:24:17.470Z\",\n      \"answers\": [\n        {\n          \"question_id\": \"string\",\n          \"value\": \"string\",\n          \"answer_ids\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"question_id\": \"string\",\n          \"value\": \"string\",\n          \"answer_ids\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ]\n    }\n  ],\n  \"page\": 3846,\n  \"per_page\": 4708,\n  \"total\": 9657,\n  \"total_pages\": 4918\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "28844510-c6e6-4cba-a804-54a14faf6192",
+              "name": "Authentication failed or API key is missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "respondents",
+                    ":respondentId",
+                    "responses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "respondentId",
+                      "description": "(Required) The unique identifier of the respondent"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f5b93995-c838-4564-8f0a-294353c49a0e",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "respondents",
+                    ":respondentId",
+                    "responses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "respondentId",
+                      "description": "(Required) The unique identifier of the respondent"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ac25711c-d1a9-44d8-9bb0-b453078dfd75",
+              "name": "Rate limit exceeded. Survicate allows up to 5 concurrent requests and up to 1000 requests per minute per workspace.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "respondents",
+                    ":respondentId",
+                    "responses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "respondentId",
+                      "description": "(Required) The unique identifier of the respondent"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://data.survicate.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "381c1f23-6b02-41d5-a714-e21a9cd0c0c3",
+    "name": "Survicate Data Export Personal Data Respondents API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Survicate Data Export API (v2) allows retrieval of survey data collected in your Survicate account. It exposes resources for surveys, responses, respondents, and personal data management to integrate feedback into databases, CRMs, and custom solutions.\n\n\nContact Support:\n Name: Survicate Developer Documentation",
+      "type": "text/plain"
+    }
+  }
+}

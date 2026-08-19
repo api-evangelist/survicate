@@ -1,0 +1,93 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Survicate Data Export Personal Data Responses API",
+    "version": "2"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Responses",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all responses for a survey",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.survicate.com/v2/surveys/:surveyId/responses",
+            "params": [
+              {
+                "name": "surveyId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the survey"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Number of responses per page"
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Filter responses from this date (ISO 8601)"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "Filter responses up to this date (ISO 8601)"
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of all responses collected for a specific survey."
+        },
+        {
+          "info": {
+            "name": "Retrieve a response",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.survicate.com/v2/surveys/:surveyId/responses/:responseId",
+            "params": [
+              {
+                "name": "surveyId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the survey"
+              },
+              {
+                "name": "responseId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the response"
+              }
+            ]
+          },
+          "docs": "Returns detailed information about a specific survey response."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

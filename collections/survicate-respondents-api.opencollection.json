@@ -1,0 +1,75 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Survicate Data Export Personal Data Respondents API",
+    "version": "2"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Respondents",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List respondent attributes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.survicate.com/v2/respondents/:respondentId/attributes",
+            "params": [
+              {
+                "name": "respondentId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the respondent"
+              }
+            ]
+          },
+          "docs": "Returns all attributes (traits) associated with a specific respondent."
+        },
+        {
+          "info": {
+            "name": "List respondent responses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.survicate.com/v2/respondents/:respondentId/responses",
+            "params": [
+              {
+                "name": "respondentId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the respondent"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Number of responses per page"
+              }
+            ]
+          },
+          "docs": "Returns all survey responses submitted by a specific respondent."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,88 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Survicate Data Export Personal Data Surveys API",
+    "version": "2"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Surveys",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all surveys",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.survicate.com/v2/surveys",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Number of surveys per page"
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of all surveys in the Survicate account."
+        },
+        {
+          "info": {
+            "name": "Retrieve survey information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.survicate.com/v2/surveys/:surveyId",
+            "params": [
+              {
+                "name": "surveyId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the survey"
+              }
+            ]
+          },
+          "docs": "Returns detailed information about a specific survey."
+        },
+        {
+          "info": {
+            "name": "List questions for a survey",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.survicate.com/v2/surveys/:surveyId/questions",
+            "params": [
+              {
+                "name": "surveyId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the survey"
+              }
+            ]
+          },
+          "docs": "Returns all questions for a specific survey along with their answer options."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

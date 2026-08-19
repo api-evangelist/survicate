@@ -1,0 +1,51 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Survicate Data Export Personal Data API",
+    "version": "2"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Personal Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get personal data counters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.survicate.com/v2/personal-data"
+          },
+          "docs": "Returns counters for personal data stored in the Survicate account, supporting GDPR compliance."
+        },
+        {
+          "info": {
+            "name": "Delete personal data by email",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://data.survicate.com/v2/personal-data",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deletes all personal data associated with a given email address for GDPR compliance."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

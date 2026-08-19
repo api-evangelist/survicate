@@ -1,0 +1,702 @@
+{
+  "item": [
+    {
+      "id": "d1059b33-9fe1-4633-82a1-7d583bde56ee",
+      "name": "Responses",
+      "description": {
+        "content": "Operations related to survey responses",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3c48a648-c062-40cf-ba8d-c6b8e56afc77",
+          "name": "List all responses for a survey",
+          "request": {
+            "name": "List all responses for a survey",
+            "description": {
+              "content": "Returns a paginated list of all responses collected for a specific survey.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "surveys",
+                ":surveyId",
+                "responses"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "20",
+                  "description": "Number of responses per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<dateTime>",
+                  "description": "Filter responses from this date (ISO 8601)"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<dateTime>",
+                  "description": "Filter responses up to this date (ISO 8601)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "surveyId",
+                  "description": "(Required) The unique identifier of the survey"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a8e22378-8e86-4269-82b8-cbfeb85432d9",
+              "name": "A list of survey responses",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "surveys",
+                    ":surveyId",
+                    "responses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "20"
+                    },
+                    {
+                      "key": "from",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "surveyId",
+                      "description": "(Required) The unique identifier of the survey"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"survey_id\": \"string\",\n      \"respondent_id\": \"string\",\n      \"completed_at\": \"2001-12-10T15:24:37.071Z\",\n      \"answers\": [\n        {\n          \"question_id\": \"string\",\n          \"value\": \"string\",\n          \"answer_ids\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"question_id\": \"string\",\n          \"value\": \"string\",\n          \"answer_ids\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"survey_id\": \"string\",\n      \"respondent_id\": \"string\",\n      \"completed_at\": \"1981-02-22T07:52:36.897Z\",\n      \"answers\": [\n        {\n          \"question_id\": \"string\",\n          \"value\": \"string\",\n          \"answer_ids\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"question_id\": \"string\",\n          \"value\": \"string\",\n          \"answer_ids\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ]\n    }\n  ],\n  \"page\": 6173,\n  \"per_page\": 9736,\n  \"total\": 8482,\n  \"total_pages\": 2351\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "890bb668-6582-46de-abf5-2e8f42cb95da",
+              "name": "Authentication failed or API key is missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "surveys",
+                    ":surveyId",
+                    "responses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "20"
+                    },
+                    {
+                      "key": "from",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "surveyId",
+                      "description": "(Required) The unique identifier of the survey"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b2657599-715f-41b2-bcaf-edade492c454",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "surveys",
+                    ":surveyId",
+                    "responses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "20"
+                    },
+                    {
+                      "key": "from",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "surveyId",
+                      "description": "(Required) The unique identifier of the survey"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2070fc81-9a7e-4cb2-99dc-74a9896010f6",
+              "name": "Rate limit exceeded. Survicate allows up to 5 concurrent requests and up to 1000 requests per minute per workspace.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "surveys",
+                    ":surveyId",
+                    "responses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "20"
+                    },
+                    {
+                      "key": "from",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "surveyId",
+                      "description": "(Required) The unique identifier of the survey"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "93a1832a-850a-4dd7-9264-629b5774161b",
+          "name": "Retrieve a response",
+          "request": {
+            "name": "Retrieve a response",
+            "description": {
+              "content": "Returns detailed information about a specific survey response.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "surveys",
+                ":surveyId",
+                "responses",
+                ":responseId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "surveyId",
+                  "description": "(Required) The unique identifier of the survey"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "responseId",
+                  "description": "(Required) The unique identifier of the response"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7e338f30-83a9-4ea0-b969-99d3bc2e2cfb",
+              "name": "Survey response details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "surveys",
+                    ":surveyId",
+                    "responses",
+                    ":responseId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "surveyId",
+                      "description": "(Required) The unique identifier of the survey"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "responseId",
+                      "description": "(Required) The unique identifier of the response"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"survey_id\": \"string\",\n  \"respondent_id\": \"string\",\n  \"completed_at\": \"1960-01-03T20:30:24.537Z\",\n  \"answers\": [\n    {\n      \"question_id\": \"string\",\n      \"value\": \"string\",\n      \"answer_ids\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"question_id\": \"string\",\n      \"value\": \"string\",\n      \"answer_ids\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0fb2142c-e50c-4dbc-bc83-619df29b94e2",
+              "name": "Authentication failed or API key is missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "surveys",
+                    ":surveyId",
+                    "responses",
+                    ":responseId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "surveyId",
+                      "description": "(Required) The unique identifier of the survey"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "responseId",
+                      "description": "(Required) The unique identifier of the response"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1e57a952-2a61-4a8e-a3d4-3c5dc15de44d",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "surveys",
+                    ":surveyId",
+                    "responses",
+                    ":responseId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "surveyId",
+                      "description": "(Required) The unique identifier of the survey"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "responseId",
+                      "description": "(Required) The unique identifier of the response"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6f99e94f-b221-463c-8f85-28e22b0b04cd",
+              "name": "Rate limit exceeded. Survicate allows up to 5 concurrent requests and up to 1000 requests per minute per workspace.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "surveys",
+                    ":surveyId",
+                    "responses",
+                    ":responseId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "surveyId",
+                      "description": "(Required) The unique identifier of the survey"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "responseId",
+                      "description": "(Required) The unique identifier of the response"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://data.survicate.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "db5c0472-c6f9-45d4-ad7d-36297529480e",
+    "name": "Survicate Data Export Personal Data Responses API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Survicate Data Export API (v2) allows retrieval of survey data collected in your Survicate account. It exposes resources for surveys, responses, respondents, and personal data management to integrate feedback into databases, CRMs, and custom solutions.\n\n\nContact Support:\n Name: Survicate Developer Documentation",
+      "type": "text/plain"
+    }
+  }
+}
