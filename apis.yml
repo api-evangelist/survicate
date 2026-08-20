@@ -72,6 +72,11 @@ apis:
   humanURL: https://developers.survicate.com/
   baseURL: https://survicate.com
   tags:
+  - Webhook
+  - Event
+  - Real-Time
+  - Integration
+  tags_raw:
   - Webhooks
   - Events
   - Real-Time
