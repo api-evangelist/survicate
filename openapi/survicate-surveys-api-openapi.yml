@@ -1,9 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Survicate Data Export Personal Data Surveys API
-  description: 'The Survicate Data Export API (v2) allows retrieval of survey data collected in your Survicate account. It exposes resources for surveys, responses, respondents, and personal data management to integrate feedback into databases, CRMs, and custom solutions.
-
-    '
+  title: Survicate Data Export Surveys API
+  description: The Survicate Data Export API (v2) allows retrieval of survey data collected in your Survicate account. It exposes resources for surveys, responses, respondents, and personal data management to integrate feedback into databases, CRMs, and custom solutions.
   version: '2'
   contact:
     name: Survicate Developer Documentation
@@ -102,6 +100,27 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
 components:
   schemas:
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          description: A human-readable error message
+        code:
+          type: string
+          description: An error code identifier
+    AnswerOption:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the answer option
+        content:
+          type: string
+          description: Text of the answer option
+        position:
+          type: integer
+          description: Position/order of the answer option
     Question:
       type: object
       properties:
@@ -171,18 +190,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Survey'
-    AnswerOption:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique identifier for the answer option
-        content:
-          type: string
-          description: Text of the answer option
-        position:
-          type: integer
-          description: Position/order of the answer option
     Pagination:
       type: object
       properties:
@@ -198,15 +205,6 @@ components:
         total_pages:
           type: integer
           description: Total number of pages
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-          description: A human-readable error message
-        code:
-          type: string
-          description: An error code identifier
     QuestionList:
       type: object
       properties:

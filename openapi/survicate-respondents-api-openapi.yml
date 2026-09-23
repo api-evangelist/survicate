@@ -1,9 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Survicate Data Export Personal Data Respondents API
-  description: 'The Survicate Data Export API (v2) allows retrieval of survey data collected in your Survicate account. It exposes resources for surveys, responses, respondents, and personal data management to integrate feedback into databases, CRMs, and custom solutions.
-
-    '
+  title: Survicate Data Export Respondents API
+  description: The Survicate Data Export API (v2) allows retrieval of survey data collected in your Survicate account. It exposes resources for surveys, responses, respondents, and personal data management to integrate feedback into databases, CRMs, and custom solutions.
   version: '2'
   contact:
     name: Survicate Developer Documentation
@@ -83,42 +81,6 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
 components:
   schemas:
-    Response:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique identifier for the response
-        survey_id:
-          type: string
-          description: Identifier of the survey this response belongs to
-        respondent_id:
-          type: string
-          description: Identifier of the respondent who submitted this response
-        completed_at:
-          type: string
-          format: date-time
-          description: Date and time when the response was completed
-        answers:
-          type: array
-          description: Answers submitted for each question
-          items:
-            $ref: '#/components/schemas/Answer'
-    Pagination:
-      type: object
-      properties:
-        page:
-          type: integer
-          description: Current page number
-        per_page:
-          type: integer
-          description: Number of items per page
-        total:
-          type: integer
-          description: Total number of items
-        total_pages:
-          type: integer
-          description: Total number of pages
     RespondentAttributes:
       type: object
       properties:
@@ -134,15 +96,6 @@ components:
             name: Jane Doe
             plan: pro
             user_id: '12345'
-    ResponseList:
-      type: object
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Response'
     Answer:
       type: object
       properties:
@@ -171,25 +124,62 @@ components:
         code:
           type: string
           description: An error code identifier
-  parameters:
-    respondentId:
-      name: respondentId
-      in: path
-      required: true
-      description: The unique identifier of the respondent
-      schema:
-        type: string
+    Pagination:
+      type: object
+      properties:
+        page:
+          type: integer
+          description: Current page number
+        per_page:
+          type: integer
+          description: Number of items per page
+        total:
+          type: integer
+          description: Total number of items
+        total_pages:
+          type: integer
+          description: Total number of pages
+    ResponseList:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Response'
+    Response:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the response
+        survey_id:
+          type: string
+          description: Identifier of the survey this response belongs to
+        respondent_id:
+          type: string
+          description: Identifier of the respondent who submitted this response
+        completed_at:
+          type: string
+          format: date-time
+          description: Date and time when the response was completed
+        answers:
+          type: array
+          description: Answers submitted for each question
+          items:
+            $ref: '#/components/schemas/Answer'
   responses:
-    Unauthorized:
-      description: Authentication failed or API key is missing
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     TooManyRequests:
       description: 'Rate limit exceeded. Survicate allows up to 5 concurrent requests and up to 1000 requests per minute per workspace.
 
         '
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication failed or API key is missing
       content:
         application/json:
           schema:
@@ -200,6 +190,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+  parameters:
+    respondentId:
+      name: respondentId
+      in: path
+      required: true
+      description: The unique identifier of the respondent
+      schema:
+        type: string
   securitySchemes:
     BasicAuth:
       type: http
