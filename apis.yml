@@ -48,7 +48,6 @@ apis:
     display programmatically.
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://developers.survicate.com/javascript/methods/
-  baseURL: https://survicate.com
   tags:
   - JavaScript
   - SDK
@@ -63,7 +62,6 @@ apis:
     on mobile platforms with integrations for Segment, UXCam, and FullStory.
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://developers.survicate.com/
-  baseURL: https://survicate.com
   tags:
   - Mobile
   - iOS
@@ -83,7 +81,6 @@ apis:
     Survicate surveys such as new responses and survey completions.
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://developers.survicate.com/
-  baseURL: https://survicate.com
   tags:
   - Webhook
   - Event

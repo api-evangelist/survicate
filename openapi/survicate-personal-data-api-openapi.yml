@@ -66,25 +66,6 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 components:
-  schemas:
-    PersonalDataCounters:
-      type: object
-      properties:
-        total_respondents:
-          type: integer
-          description: Total number of respondents with stored personal data
-        total_responses:
-          type: integer
-          description: Total number of responses containing personal data
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-          description: A human-readable error message
-        code:
-          type: string
-          description: An error code identifier
   responses:
     TooManyRequests:
       description: 'Rate limit exceeded. Survicate allows up to 5 concurrent requests and up to 1000 requests per minute per workspace.
@@ -106,6 +87,25 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+  schemas:
+    PersonalDataCounters:
+      type: object
+      properties:
+        total_respondents:
+          type: integer
+          description: Total number of respondents with stored personal data
+        total_responses:
+          type: integer
+          description: Total number of responses containing personal data
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          description: A human-readable error message
+        code:
+          type: string
+          description: An error code identifier
   securitySchemes:
     BasicAuth:
       type: http

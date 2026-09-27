@@ -99,58 +99,43 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 components:
+  responses:
+    TooManyRequests:
+      description: 'Rate limit exceeded. Survicate allows up to 5 concurrent requests and up to 1000 requests per minute per workspace.
+
+        '
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication failed or API key is missing
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    Error:
+    Pagination:
       type: object
       properties:
-        message:
-          type: string
-          description: A human-readable error message
-        code:
-          type: string
-          description: An error code identifier
-    AnswerOption:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique identifier for the answer option
-        content:
-          type: string
-          description: Text of the answer option
-        position:
+        page:
           type: integer
-          description: Position/order of the answer option
-    Question:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique identifier for the question
-        survey_id:
-          type: string
-          description: Identifier of the parent survey
-        type:
-          type: string
-          description: Type of question (e.g., nps, rating, text, multiple_choice)
-          enum:
-          - nps
-          - rating
-          - text
-          - multiple_choice
-          - checkbox
-          - dropdown
-        content:
-          type: string
-          description: The question text
-        position:
+          description: Current page number
+        per_page:
           type: integer
-          description: Position/order of the question in the survey
-        answers:
-          type: array
-          description: Available answer options for closed-ended questions
-          items:
-            $ref: '#/components/schemas/AnswerOption'
+          description: Number of items per page
+        total:
+          type: integer
+          description: Total number of items
+        total_pages:
+          type: integer
+          description: Total number of pages
     Survey:
       type: object
       properties:
@@ -181,6 +166,55 @@ components:
         questions_count:
           type: integer
           description: Total number of questions in the survey
+    QuestionList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Question'
+    Question:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the question
+        survey_id:
+          type: string
+          description: Identifier of the parent survey
+        type:
+          type: string
+          description: Type of question (e.g., nps, rating, text, multiple_choice)
+          enum:
+          - nps
+          - rating
+          - text
+          - multiple_choice
+          - checkbox
+          - dropdown
+        content:
+          type: string
+          description: The question text
+        position:
+          type: integer
+          description: Position/order of the question in the survey
+        answers:
+          type: array
+          description: Available answer options for closed-ended questions
+          items:
+            $ref: '#/components/schemas/AnswerOption'
+    AnswerOption:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the answer option
+        content:
+          type: string
+          description: Text of the answer option
+        position:
+          type: integer
+          description: Position/order of the answer option
     SurveyList:
       type: object
       allOf:
@@ -190,28 +224,15 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Survey'
-    Pagination:
+    Error:
       type: object
       properties:
-        page:
-          type: integer
-          description: Current page number
-        per_page:
-          type: integer
-          description: Number of items per page
-        total:
-          type: integer
-          description: Total number of items
-        total_pages:
-          type: integer
-          description: Total number of pages
-    QuestionList:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Question'
+        message:
+          type: string
+          description: A human-readable error message
+        code:
+          type: string
+          description: An error code identifier
   parameters:
     surveyId:
       name: surveyId
@@ -220,27 +241,6 @@ components:
       description: The unique identifier of the survey
       schema:
         type: string
-  responses:
-    TooManyRequests:
-      description: 'Rate limit exceeded. Survicate allows up to 5 concurrent requests and up to 1000 requests per minute per workspace.
-
-        '
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication failed or API key is missing
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The requested resource was not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     BasicAuth:
       type: http
