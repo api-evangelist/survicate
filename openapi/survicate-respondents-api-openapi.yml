@@ -80,28 +80,22 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 components:
-  responses:
-    TooManyRequests:
-      description: 'Rate limit exceeded. Survicate allows up to 5 concurrent requests and up to 1000 requests per minute per workspace.
-
-        '
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication failed or API key is missing
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The requested resource was not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
+    Pagination:
+      type: object
+      properties:
+        page:
+          type: integer
+          description: Current page number
+        per_page:
+          type: integer
+          description: Number of items per page
+        total:
+          type: integer
+          description: Total number of items
+        total_pages:
+          type: integer
+          description: Total number of pages
     Response:
       type: object
       properties:
@@ -123,30 +117,21 @@ components:
           description: Answers submitted for each question
           items:
             $ref: '#/components/schemas/Answer'
-    Pagination:
+    RespondentAttributes:
       type: object
       properties:
-        page:
-          type: integer
-          description: Current page number
-        per_page:
-          type: integer
-          description: Number of items per page
-        total:
-          type: integer
-          description: Total number of items
-        total_pages:
-          type: integer
-          description: Total number of pages
-    ResponseList:
-      type: object
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Response'
+        respondent_id:
+          type: string
+          description: Unique identifier for the respondent
+        attributes:
+          type: object
+          additionalProperties: true
+          description: Key-value pairs of respondent traits/attributes
+          example:
+            email: user@example.com
+            name: Jane Doe
+            plan: pro
+            user_id: '12345'
     Answer:
       type: object
       properties:
@@ -166,6 +151,15 @@ components:
           description: IDs of selected answer options (for closed-ended questions)
           items:
             type: string
+    ResponseList:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Response'
     Error:
       type: object
       properties:
@@ -175,21 +169,27 @@ components:
         code:
           type: string
           description: An error code identifier
-    RespondentAttributes:
-      type: object
-      properties:
-        respondent_id:
-          type: string
-          description: Unique identifier for the respondent
-        attributes:
-          type: object
-          additionalProperties: true
-          description: Key-value pairs of respondent traits/attributes
-          example:
-            email: user@example.com
-            name: Jane Doe
-            plan: pro
-            user_id: '12345'
+  responses:
+    NotFound:
+      description: The requested resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    TooManyRequests:
+      description: 'Rate limit exceeded. Survicate allows up to 5 concurrent requests and up to 1000 requests per minute per workspace.
+
+        '
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication failed or API key is missing
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   parameters:
     respondentId:
       name: respondentId
