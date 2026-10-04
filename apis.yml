@@ -151,6 +151,9 @@ apis:
   - type: Authentication
     url: https://developers.survicate.com/data-export/setup/
 common:
+  - type: CapabilityMap
+    url: capabilities/survicate-capability-edges.yml
+    name: Survicate Business Capability Map
   - type: AgenticAccess
     url: agentic-access/survicate-agentic-access.yml
   - type: TrustCenter

@@ -1,0 +1,56 @@
+slug: survicate
+provider: Survicate
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 4
+edges:
+- tag: Responses
+  spec_file: survicate-responses-api-openapi.yml
+  capability_id: BC-430.50
+  capability_id_l1: BC-430
+  capability_name: Customer Feedback Management
+  confidence: 0.85
+  evidence: GET /v2/surveys/{surveyId}/responses listResponses List all responses for a survey
+  reason: Retrieval of survey responses and answers from a customer feedback platform is squarely surveys/NPS/voice-of-customer
+    data, i.e. Customer Feedback Management.
+- tag: Surveys
+  spec_file: survicate-surveys-api-openapi.yml
+  capability_id: BC-430.50
+  capability_id_l1: BC-430
+  capability_name: Customer Feedback Management
+  confidence: 0.85
+  evidence: GET /v2/surveys/{surveyId}/questions listSurveyQuestions List questions for a survey
+  reason: Surveys and their question structure are the instrument of a customer feedback programme; the
+    vendor is explicitly a 'customer feedback and survey platform', so Customer Feedback Management is
+    the capability realised.
+- tag: Personal Data
+  spec_file: survicate-personal-data-api-openapi.yml
+  capability_id: BC-130.50
+  capability_id_l1: BC-130
+  capability_name: Privacy & Data Protection Management
+  confidence: 0.75
+  evidence: DELETE /v2/personal-data deletePersonalDataByEmail Delete personal data by email
+  reason: The operations count and erase personally identifiable respondent data keyed by email address
+    — the mechanics of data-subject erasure/right-to-be-forgotten handling, which realises privacy and
+    data protection management. Confidence held below 0.8 because only two thin operations and no explicit
+    regulatory framing are given.
+- tag: Respondents
+  spec_file: survicate-respondents-api-openapi.yml
+  capability_id: BC-430.50
+  capability_id_l1: BC-430
+  capability_name: Customer Feedback Management
+  confidence: 0.72
+  evidence: GET /v2/respondents/{respondentId}/responses listRespondentResponses List respondent responses
+  reason: Respondents here are survey participants whose attributes and submitted answers are exported;
+    schemas Response/Answer/RespondentAttributes confirm this is voice-of-customer survey data rather
+    than customer master data. Supports customer feedback management, though the respondent-attribute
+    endpoint edges toward audience/segmentation data, hence moderate confidence.
