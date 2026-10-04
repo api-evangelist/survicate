@@ -81,42 +81,6 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
 components:
   schemas:
-    Pagination:
-      type: object
-      properties:
-        page:
-          type: integer
-          description: Current page number
-        per_page:
-          type: integer
-          description: Number of items per page
-        total:
-          type: integer
-          description: Total number of items
-        total_pages:
-          type: integer
-          description: Total number of pages
-    Response:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique identifier for the response
-        survey_id:
-          type: string
-          description: Identifier of the survey this response belongs to
-        respondent_id:
-          type: string
-          description: Identifier of the respondent who submitted this response
-        completed_at:
-          type: string
-          format: date-time
-          description: Date and time when the response was completed
-        answers:
-          type: array
-          description: Answers submitted for each question
-          items:
-            $ref: '#/components/schemas/Answer'
     RespondentAttributes:
       type: object
       properties:
@@ -151,6 +115,42 @@ components:
           description: IDs of selected answer options (for closed-ended questions)
           items:
             type: string
+    Response:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the response
+        survey_id:
+          type: string
+          description: Identifier of the survey this response belongs to
+        respondent_id:
+          type: string
+          description: Identifier of the respondent who submitted this response
+        completed_at:
+          type: string
+          format: date-time
+          description: Date and time when the response was completed
+        answers:
+          type: array
+          description: Answers submitted for each question
+          items:
+            $ref: '#/components/schemas/Answer'
+    Pagination:
+      type: object
+      properties:
+        page:
+          type: integer
+          description: Current page number
+        per_page:
+          type: integer
+          description: Number of items per page
+        total:
+          type: integer
+          description: Total number of items
+        total_pages:
+          type: integer
+          description: Total number of pages
     ResponseList:
       type: object
       allOf:
@@ -169,7 +169,21 @@ components:
         code:
           type: string
           description: An error code identifier
+  parameters:
+    respondentId:
+      name: respondentId
+      in: path
+      required: true
+      description: The unique identifier of the respondent
+      schema:
+        type: string
   responses:
+    Unauthorized:
+      description: Authentication failed or API key is missing
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
     NotFound:
       description: The requested resource was not found
       content:
@@ -184,20 +198,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication failed or API key is missing
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-  parameters:
-    respondentId:
-      name: respondentId
-      in: path
-      required: true
-      description: The unique identifier of the respondent
-      schema:
-        type: string
   securitySchemes:
     BasicAuth:
       type: http

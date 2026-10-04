@@ -67,15 +67,6 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
 components:
   schemas:
-    PersonalDataCounters:
-      type: object
-      properties:
-        total_respondents:
-          type: integer
-          description: Total number of respondents with stored personal data
-        total_responses:
-          type: integer
-          description: Total number of responses containing personal data
     Error:
       type: object
       properties:
@@ -85,7 +76,22 @@ components:
         code:
           type: string
           description: An error code identifier
+    PersonalDataCounters:
+      type: object
+      properties:
+        total_respondents:
+          type: integer
+          description: Total number of respondents with stored personal data
+        total_responses:
+          type: integer
+          description: Total number of responses containing personal data
   responses:
+    Unauthorized:
+      description: Authentication failed or API key is missing
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
     NotFound:
       description: The requested resource was not found
       content:
@@ -96,12 +102,6 @@ components:
       description: 'Rate limit exceeded. Survicate allows up to 5 concurrent requests and up to 1000 requests per minute per workspace.
 
         '
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication failed or API key is missing
       content:
         application/json:
           schema:

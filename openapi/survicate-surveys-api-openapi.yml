@@ -100,51 +100,6 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
 components:
   schemas:
-    Survey:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique identifier for the survey
-        name:
-          type: string
-          description: Name of the survey
-        status:
-          type: string
-          description: Status of the survey (e.g., active, paused, closed)
-          enum:
-          - active
-          - paused
-          - closed
-        created_at:
-          type: string
-          format: date-time
-          description: Date and time when the survey was created
-        updated_at:
-          type: string
-          format: date-time
-          description: Date and time when the survey was last updated
-        responses_count:
-          type: integer
-          description: Total number of responses collected
-        questions_count:
-          type: integer
-          description: Total number of questions in the survey
-    Pagination:
-      type: object
-      properties:
-        page:
-          type: integer
-          description: Current page number
-        per_page:
-          type: integer
-          description: Number of items per page
-        total:
-          type: integer
-          description: Total number of items
-        total_pages:
-          type: integer
-          description: Total number of pages
     Question:
       type: object
       properties:
@@ -175,31 +130,6 @@ components:
           description: Available answer options for closed-ended questions
           items:
             $ref: '#/components/schemas/AnswerOption'
-    QuestionList:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Question'
-    SurveyList:
-      type: object
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Survey'
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-          description: A human-readable error message
-        code:
-          type: string
-          description: An error code identifier
     AnswerOption:
       type: object
       properties:
@@ -212,7 +142,83 @@ components:
         position:
           type: integer
           description: Position/order of the answer option
+    Pagination:
+      type: object
+      properties:
+        page:
+          type: integer
+          description: Current page number
+        per_page:
+          type: integer
+          description: Number of items per page
+        total:
+          type: integer
+          description: Total number of items
+        total_pages:
+          type: integer
+          description: Total number of pages
+    Survey:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the survey
+        name:
+          type: string
+          description: Name of the survey
+        status:
+          type: string
+          description: Status of the survey (e.g., active, paused, closed)
+          enum:
+          - active
+          - paused
+          - closed
+        created_at:
+          type: string
+          format: date-time
+          description: Date and time when the survey was created
+        updated_at:
+          type: string
+          format: date-time
+          description: Date and time when the survey was last updated
+        responses_count:
+          type: integer
+          description: Total number of responses collected
+        questions_count:
+          type: integer
+          description: Total number of questions in the survey
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          description: A human-readable error message
+        code:
+          type: string
+          description: An error code identifier
+    SurveyList:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Survey'
+    QuestionList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Question'
   responses:
+    Unauthorized:
+      description: Authentication failed or API key is missing
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
     NotFound:
       description: The requested resource was not found
       content:
@@ -223,12 +229,6 @@ components:
       description: 'Rate limit exceeded. Survicate allows up to 5 concurrent requests and up to 1000 requests per minute per workspace.
 
         '
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication failed or API key is missing
       content:
         application/json:
           schema:
