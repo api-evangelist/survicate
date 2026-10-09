@@ -1,3 +1,8 @@
+# Provenance stamped 2026-10-07 (roadmap#943): written by an API Evangelist sweep (dated 2026-06-13 by the file itself), not
+# harvested from the provider. `method: generated` so the economics campaign may replace it with a
+# dated, verbatim transcription; every figure below is unverified until it does.
+method: generated
+generated: '2026-06-13'
 name: Survicate API Rate Limits
 description: Survicate enforces two rate limiting measures on the Data Export API — a cap on concurrent simultaneous requests and a per-workspace per-minute request ceiling. Exceeding either limit returns a 429 Too Many Requests response.
 url: https://developers.survicate.com/data-export/setup/
