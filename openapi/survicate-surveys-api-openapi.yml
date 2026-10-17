@@ -99,7 +99,40 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 components:
+  responses:
+    TooManyRequests:
+      description: 'Rate limit exceeded. Survicate allows up to 5 concurrent requests and up to 1000 requests per minute per workspace.
+
+        '
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication failed or API key is missing
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
+    AnswerOption:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the answer option
+        content:
+          type: string
+          description: Text of the answer option
+        position:
+          type: integer
+          description: Position/order of the answer option
     Question:
       type: object
       properties:
@@ -130,18 +163,6 @@ components:
           description: Available answer options for closed-ended questions
           items:
             $ref: '#/components/schemas/AnswerOption'
-    AnswerOption:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique identifier for the answer option
-        content:
-          type: string
-          description: Text of the answer option
-        position:
-          type: integer
-          description: Position/order of the answer option
     Pagination:
       type: object
       properties:
@@ -187,6 +208,13 @@ components:
         questions_count:
           type: integer
           description: Total number of questions in the survey
+    QuestionList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Question'
     Error:
       type: object
       properties:
@@ -205,34 +233,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Survey'
-    QuestionList:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Question'
-  responses:
-    Unauthorized:
-      description: Authentication failed or API key is missing
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The requested resource was not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    TooManyRequests:
-      description: 'Rate limit exceeded. Survicate allows up to 5 concurrent requests and up to 1000 requests per minute per workspace.
-
-        '
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   parameters:
     surveyId:
       name: surveyId
