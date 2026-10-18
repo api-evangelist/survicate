@@ -94,7 +94,7 @@
     - alpha
     in_cloud: true
     builder: unknown (community connector; contributor not in the record)
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: survicate-fivetran
   label: Fivetran
@@ -120,7 +120,7 @@
     - connectors/applications/survicate
     vendor_link: https://survicate.com/
     builder: Fivetran
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: survicate-slack-own
   label: Slack (own)
