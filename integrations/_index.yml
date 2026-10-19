@@ -135,3 +135,16 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
+- slug: survicate-zendesk-own
+  label: Zendesk (own)
+  partner: zendesk
+  partner_name: Zendesk (own)
+  category: Reporting and Analytics
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://www.zendesk.com/marketplace/apps/support/239186/survicate/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
